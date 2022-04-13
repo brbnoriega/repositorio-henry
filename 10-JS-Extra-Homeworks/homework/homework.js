@@ -10,6 +10,13 @@ function deObjetoAmatriz(objeto){
       C: 3
     }) ➞ [["D", 1], ["B", 2], ["C", 3]]*/
   //Escribe tu código aquí
+
+var nuevoArr = [] 
+
+for (var clave in objeto){
+  nuevoArr.push([clave,objeto[clave]])
+}
+return nuevoArr
 }
 
 
@@ -18,6 +25,10 @@ function numberOfCharacters(string) {
   //en formato par clave-valor.
   //Ej: Recibe ---> "adsjfdsfsfjsdjfhacabcsbajda" || Devuelve ---> { a: 5, b: 2, c: 2, d: 4, f: 4, h:1, j: 4, s: 5 } 
   //Escribe tu código aquí
+  
+var obj = {}
+
+
 }
 
 
@@ -26,6 +37,19 @@ function capToFront(s) {
   //al principio de la palabra.
   //Ejemplo: soyHENRY -> HENRYsoy
   //Escribe tu código aquí
+
+var mayusculas = ""
+var minusculas = ""
+  for (var i=0; i < s.length; i++){
+
+  if (s[i] === s[i].toUpperCase()) {
+  mayusculas = mayusculas + s[i].toUpperCase()
+
+  }else {
+    minusculas = minusculas + s[i]
+  }
+  }
+  return mayusculas + minusculas
 }
 
 
@@ -33,9 +57,36 @@ function asAmirror(str) {
   //La función recibe una frase. 
   //Escribe una función que tome la frase recibida y la devuelva de modo tal que se pueda leer de izquierda a derecha 
   //pero con cada una de sus palabras invertidas, como si fuera un espejo.
-  //Ej: Recibe ---> "The Henry Challenge is close!" || Devuelve ---> "ehT yrneH egnellahC si !esolc"
+  //Ej: Recibe ---> "The Henry Challenge is close!" || 
+  //  Devuelve ---> "ehT yrneH egnellahC si !esolc"
   //Escribe tu código aquí
+
+function darVuelta(a){
+
+    // Paso 1. Usa el método split() para devolver un nuevo arreglo 
+    var separarCadena = a.split(""); // var separarCadena = "hola".split("");
+    // ["h", "o", "l", "a"]
+ 
+    // Paso 2. Usa el método reverse() para invertir el nuevo arreglo creado
+    var invertirArreglo = separarCadena.reverse(); // var invertirArreglo = ["h", "o", "l", "a"].reverse();
+    // ["a", "l", "o", "h"]
+
+    // Paso 3. Usa el método join() para unir todos los elementos del arreglo en una cadena
+    var unirArreglo = invertirArreglo.join(""); // var unirArreglo = ["a", "l", "o", "h"].join("");
+    // "aloh"
+
+    //Paso 4. Devolver la cadena invertida
+    return unirArreglo; // "aloh"
 } 
+var guardar = ""
+guardar = str.split(" ") // ["the". "henry". "challenge"]
+
+for (var i = 0; i < guardar.length; i++){
+guardar[i] = darVuelta(guardar[i])                // ['eht','yrneh','egnellahc']
+}
+return guardar.join(" ") // eht yrneh egnellahc
+}
+
 
 
 function capicua(numero){
@@ -43,6 +94,31 @@ function capicua(numero){
   //La misma debe retornar: "Es capicua" si el número se número que se lee igual de 
   //izquierda a derecha que de derecha a izquierda. Caso contrario retorna "No es capicua"
   //Escribe tu código aquí
+
+  var arr = []
+  function darleVuelta (a){
+
+    // Paso 1. Usa el método split() para devolver un nuevo arreglo 
+    var separarCadena = a.split(""); // var separarCadena = "hola".split("");
+    // ["h", "o", "l", "a"]
+ 
+    // Paso 2. Usa el método reverse() para invertir el nuevo arreglo creado
+    var invertirArreglo = separarCadena.reverse(); // var invertirArreglo = ["h", "o", "l", "a"].reverse();
+    // ["a", "l", "o", "h"]
+
+    // Paso 3. Usa el método join() para unir todos los elementos del arreglo en una cadena
+    var unirArreglo = invertirArreglo.join(""); // var unirArreglo = ["a", "l", "o", "h"].join("");
+    // "aloh"
+
+    //Paso 4. Devolver la cadena invertida
+    return unirArreglo; // "aloh"
+} 
+  if (numero.toString()  === darleVuelta(numero.toString())){
+      return "Es capicua" 
+  } else{
+    return "No es capicua"
+  }
+  
 }
 
 
@@ -50,13 +126,45 @@ function deleteAbc(cadena){
   //Define una función que elimine las letras "a", "b" y "c" de la cadena dada 
   //y devuelva la versión modificada o la misma cadena, en caso de contener dichas letras.
   //Escribe tu código aquí
-}
 
+var cadenita = ""
+
+//var probando = "" 
+
+  for (var i= 0; i < cadena.length; i++){
+
+  if (cadena [i] !== "a" && cadena [i] !== "b" && cadena [i] !== "c"){
+    
+  cadenita = cadenita + cadena[i]// este codigo al reves (cadenita = cadena[i]+ cadenita) da por resultado un reverse
+
+  }
+  }
+
+ //probando = cadenita.split("a").join(''); 
+ //probando = probando.split("b").join(''); 
+ //probando = probando.split("c").join(''); 
+
+  //return probando 
+    return cadenita
+
+}    
 
 function sortArray(arr) {
   //La función recibe una matriz de strings. Ordena la matriz en orden creciente de longitudes de cadena
   //Ej: Recibe ---> ["You", "are", "beautiful", "looking"] || Devuelve ---> [“You", "are", "looking", "beautiful"]
   //Escribe tu código aquí
+
+  arr.sort((a,b) =>{
+if (a.length == b.length){
+  return 0 
+}
+if (a.length < b.length){
+  return -1
+}
+  return 1
+})
+return arr 
+ 
 }
 
 
@@ -65,11 +173,22 @@ function buscoInterseccion(arreglo1, arreglo2){
   //retornar un nuevo array con la intersección de ambos elementos. (Ej: [4,2,3] unión [1,3,4] = [3,4].
   //Si no tienen elementos en común, retornar un arreglo vacío.
   //Aclaración: los arreglos no necesariamente tienen la misma longitud
-  //Escribe tu código aquí  
+  //Escribe tu código aquí
+ 
+  var iguales = []
+
+  for (var a= 0; a < arreglo1.length; a++){
+  for (var b= 0; b < arreglo2.length; b++)
+
+
+if (arreglo1[a] === arreglo2[b]){
+
+  iguales.push(arreglo1[a])
 }
-
-
-
+}
+  return iguales
+    
+}
 // No modificar nada debajo de esta línea
 // --------------------------------
 
