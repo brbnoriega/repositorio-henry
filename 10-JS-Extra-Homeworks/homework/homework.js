@@ -28,7 +28,16 @@ function numberOfCharacters(string) {
   
 var obj = {}
 
+for(var i= 0; i < string.length; i ++){
 
+  if(obj.hasOwnProperty(string[i])){
+    obj[string[i]] = obj[string[i]] + 1 // contador de mis propiedades
+  }else{
+    obj[string[i]]= 1 // si no esta creada la propiedad
+  }
+
+}
+return obj
 }
 
 
